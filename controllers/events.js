@@ -32,7 +32,7 @@ router.post('/new', (req, res) => {
   })
 
   router.get('/singleEvent/:id', (req, res) => {
-    db.event.findById(
+    db.Event.findById(
         req.params.id
     )
     .then(post => {
@@ -41,6 +41,25 @@ router.post('/new', (req, res) => {
     .catch(err => {
         console.log("error in single post by id route", err)
     })
+})
+
+router.post ('/singleEvent/:id', (req, res) => {
+  db.Event.findOneAndUpdate({
+      _id: req.params.id
+  },
+  {
+    $push: {
+      "chats": {
+        "content": req.body.content
+      }
+  }
+})
+.then(chats => {
+res.send(chats)
+})
+.catch(err => {
+console.log("error in single post by id route", err)
+})
 })
 
 module.exports = router
