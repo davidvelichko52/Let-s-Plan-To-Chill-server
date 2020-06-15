@@ -35,11 +35,11 @@ router.post('/new', (req, res) => {
     db.Event.findById(
         req.params.id
     )
-    .then(post => {
-        res.send(post)
+    .then(event => {
+        res.send(event)
     })
     .catch(err => {
-        console.log("error in single post by id route", err)
+        console.log("error in single event by id route", err)
     })
 })
 
@@ -58,8 +58,60 @@ router.post ('/singleEvent/:id', (req, res) => {
 res.send(chats)
 })
 .catch(err => {
-console.log("error in single post by id route", err)
+console.log("error in single event by id route", err)
 })
+})
+
+
+router.delete('/:id', (req, res) => {
+  console.log("hitting the delete route")
+    db.Event.deleteOne({
+            _id: req.params.id
+    })
+    .then(event => {
+        res.send(event)
+    })
+    .catch(err => {
+        console.log("error in Delete single event route", err)
+    })
+})
+
+
+router.get('/edit', (req, res) => {
+  console.log("hitting the get edit route lets get it you are a king/queen you champion code star");
+    db.Event.findOne({
+        _id: req.body.id
+    })
+    .then(event => {
+        res.send(event)
+    })
+    .catch(err => {
+        console.log('you made a boo boo', err)
+    })
+})
+
+
+router.put('/edit/:id', (req, res) => {
+    db.Event.updateOne({
+        _id: req.params.id,
+    }, {
+      $set: {
+    
+       "location" : req.body.location,
+        "pic" : req.body.pic,
+        "description" : req.body.description,
+        "date" : req.body.date,
+        "things" : req.body.things
+    }
+    })
+    .then(event => {
+       console.log("hitting the edit events route", event);
+        res.send(event)
+
+    })
+    .catch(err => {
+        console.log('you made a boo boo', err)
+    })
 })
 
 module.exports = router
