@@ -1,5 +1,12 @@
 # lets-plan-to-chill(Server-side)
 
+## let's-plan-to-chill
+This is a Website site that is meant for creating events and planning them out. On this website you can view all events created and comment on individual events.
+
+### live link https://lets-plan-to-chill.herokuapp.com/
+
+
+
 # Models
 
 ### event model
