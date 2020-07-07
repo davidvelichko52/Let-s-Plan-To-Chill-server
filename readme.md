@@ -55,3 +55,23 @@
 | ----| ------------------------- | --------------- |
 | get  | `/` | User should be logged in to access this route |
 
+## Directions For Use
+
+### 1. Clone the repository, but with a diffrent name
+
+Run on the terminal
+
+```sh
+git clone <repo_link> <new_name>
+```
+**For example**
+
+```sh
+git clone git@github.com:davidvelichko52/node-auth-boiler-1.git shiny-new-project
+```
+
+### 2. Install the modules from package.json
+
+```sh
+npm i
+```
